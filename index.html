@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mobile Car Tech Manchester</title>
+
+<meta name="description" content="Mobile dash cam fitting in Manchester at your home or workplace. Prices from £99. Book on WhatsApp.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: a short page read top to bottom: what it is, prices, how it works, book. */
+:root {
+  --bg: #FFFFFF;
+  --surface: #F5F5F5;
+  --text: #111111;
+  --muted: #555555;
+  --line: #DDDDDD;
+  --accent: #D62828;
+  --on-accent: #FFFFFF;
+  --error: #B3261E;
+  --font: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111; --surface: #1C1C1C; --text: #FFFFFF; --muted: #AAAAAA;
+    --line: #333333; --accent: #EF5350; --on-accent: #111111; --error: #FF8F86;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1C1C1C; --text: #FFFFFF; --muted: #AAAAAA;
+  --line: #333333; --accent: #EF5350; --on-accent: #111111; --error: #FF8F86;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--font); font-size: 20px; line-height: 1.55;
+  padding-block: 0 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 640px; margin: 0 auto; }
+a { color: inherit; }
+h1, h2 { text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(34px, 8vw, 48px); }
+h2 { font-size: clamp(28px, 6vw, 34px); margin-bottom: 18px; }
+p { margin: 0; }
+.name { font-weight: 700; padding-block: 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; }
+nav { display: flex; gap: 20px; font-weight: 400; font-size: 18px; flex-wrap: wrap; }
+nav a { text-underline-offset: 4px; }
+.hero { padding-block: 40px 44px; display: grid; gap: 14px; }
+.sub { color: var(--muted); font-size: 22px; }
+section { padding-block: 44px; border-top: 1px solid var(--line); }
+.btn {
+  display: inline-block; text-decoration: none; text-align: center; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent);
+  font: 700 21px/1.2 var(--font); padding: 18px 30px; border-radius: 8px;
+}
+.btn.alt { background: transparent; color: var(--text); border-color: var(--text); }
+.btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+.group { font-weight: 700; color: var(--muted); font-size: 18px; margin: 26px 0 4px; }
+.group:first-of-type { margin-top: 0; }
+.price { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.price b { font-size: 22px; }
+.price small { display: block; color: var(--muted); font-size: 17px; line-height: 1.4; }
+.price .p { font-size: 34px; font-weight: 700; white-space: nowrap; }
+.note { margin-top: 20px; background: var(--surface); border-radius: 8px; padding: 14px 18px; }
+
+.steps { counter-reset: s; display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline; }
+.steps li::before { content: counter(s) "."; font-weight: 700; font-size: 26px; color: var(--accent); }
+
+form { display: grid; gap: 20px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+label { font-weight: 700; }
+input[type=text], input[type=date], select {
+  width: 100%; font: 400 20px/1.4 var(--font); color: var(--text); background: var(--bg);
+  border: 2px solid var(--muted); border-radius: 8px; padding: 14px; min-width: 0;
+}
+.err { color: var(--error); font-weight: 700; font-size: 17px; }
+[aria-invalid="true"] { border-color: var(--error); }
+.hint { color: var(--muted); font-size: 17px; }
+.review { display: grid; gap: 16px; border: 2px solid var(--accent); border-radius: 8px; padding: 20px; }
+.review pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 400 17px/1.55 var(--font); background: var(--surface); border-radius: 8px; padding: 14px 16px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.setup { background: var(--surface); border: 1px dashed var(--muted); border-radius: 8px; padding: 12px 16px; font-size: 16px; color: var(--muted); }
+
+.qa { display: grid; gap: 22px; }
+.qa b { display: block; }
+.qa span { color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 26px; color: var(--muted); font-size: 16px; }
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--bg); border-top: 1px solid var(--line);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.bar { display: flex; gap: 10px; }
+.bar .btn { display: block; flex: 1; padding-inline: 10px; }
+@media (min-width: 820px) { .bar { display: none; } body { padding-bottom: 0; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.name { background: #111111; color: #FFFFFF; border-bottom: 0; box-shadow: 0 0 0 100vmax #111111; clip-path: inset(0 -100vmax); }
+.name :focus-visible { outline-color: #FFFFFF; }
+html{color-scheme:light}[hidden]{display:none!important}img{max-width:100%}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <div class="name">
+    <span>Mobile Car Tech Manchester</span>
+    <nav aria-label="Pages"><a href="#book">Book</a><a href="/fitting-guide/">Fitting guide</a><a href="/my-work/">My work</a></nav>
+  </div>
+
+  <div class="hero">
+    <h1>Dash cam fitting in Manchester</h1>
+    <p class="sub">I come to your home or workplace.</p>
+    <div style="padding-top:10px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="#book">Book now</a><a class="btn alt" data-wa href="#">WhatsApp me</a></div>
+  </div>
+
+  <section id="prices">
+    <h2>Prices</h2>
+
+    <p class="group">You buy the dash cam, I fit it</p>
+    <div class="price"><b>Front camera</b><span class="p">£99</span></div>
+    <div class="price"><div><b>Front and rear cameras</b><small>£99 plus £30 for the rear camera</small></div><span class="p">£129</span></div>
+
+    <p class="group">I supply the dash cam and fit it</p>
+    <div class="price"><b>Front camera</b><span class="p">£149</span></div>
+    <div class="price"><b>Front and rear cameras</b><span class="p">£219</span></div>
+
+    <p class="note">The dash cams I supply link to your phone, so you can watch your footage there.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>Tell me your car and the option you want.</li>
+      <li>We agree a time.</li>
+      <li>I fit it where your car is parked.</li>
+    </ol>
+  </section>
+
+  <section id="book">
+    <h2>Book now</h2>
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="opt">Option</label>
+        <select id="opt">
+          <option value="Front camera fitting (you supply the dash cam)|£99">Front camera, I fit yours: £99</option>
+          <option value="Front and rear camera fitting (you supply the dash cam)|£129">Front and rear, I fit yours: £129</option>
+          <option value="Front dash cam supplied and fitted|£149">Front camera, I supply and fit: £149</option>
+          <option value="Front and rear dash cams supplied and fitted|£219">Front and rear, I supply and fit: £219</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="car">Your car</label>
+        <input type="text" id="car" autocomplete="off" placeholder="Make, model and year" aria-describedby="car-err">
+        <div class="err" id="car-err" role="alert"></div>
+      </div>
+      <div class="field">
+        <label for="postcode">Postcode</label>
+        <input type="text" id="postcode" autocomplete="postal-code" placeholder="Where the car will be" aria-describedby="postcode-err">
+        <div class="err" id="postcode-err" role="alert"></div>
+      </div>
+      <div class="field">
+        <label for="date">Day you'd like</label>
+        <input type="date" id="date">
+        <div class="hint">I'll confirm a time with you on WhatsApp.</div>
+      </div>
+      <div class="field">
+        <label for="who">Your name</label>
+        <input type="text" id="who" autocomplete="name" aria-describedby="who-err">
+        <div class="err" id="who-err" role="alert"></div>
+      </div>
+      <div><button class="btn" type="submit">Continue</button></div>
+    </form>
+
+    <div class="review" id="review" hidden tabindex="-1">
+      <h2 style="font-size:26px;margin:0">Last step</h2>
+      <p>Tap the button to send this to me on WhatsApp.</p>
+      <pre id="msg"></pre>
+      <div class="setup" id="setup" hidden>Owner: add your WhatsApp number at the top of this page's script so this button works. Until then, use Copy message.</div>
+      <div class="actions">
+        <a class="btn" id="send" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <button class="btn alt" type="button" id="copy">Copy message</button>
+        <button class="btn alt" type="button" id="edit">Change details</button>
+      </div>
+      <p class="hint" id="copied" role="status"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <div class="qa">
+      <div><b>Do you come to me?</b><span>Yes. I fit it at your home or workplace. I'm based in Manchester and cover nearby areas, so put your postcode in the form.</span></div>
+      <div><b>Can you fit a dash cam I've already bought?</b><span>Yes. Choose "I fit yours".</span></div>
+      <div><b>Does the rear camera show on my car's screen?</b><span>No. It records what's behind you. If your car has no reversing camera, ask me what's possible.</span></div>
+    </div>
+  </section>
+
+  <footer>Mobile Car Tech Manchester · Dash cam fitting in Manchester and nearby areas</footer>
+</div>
+
+<div class="bar"><a class="btn" href="#book">Book now</a><a class="btn alt" data-wa href="#">WhatsApp</a></div>
+
+<script>
+// OWNER: put your WhatsApp number here in international format with no +, spaces or leading 0.
+// Example: "447123456789"
+var WHATSAPP = "447356233159";
+
+(function () {
+  var msg = "Hi, I'm looking to book a dash cam fitting in Manchester. My car is [make/model] and I'm interested in [service option].";
+  var links = document.querySelectorAll("[data-wa]");
+  for (var i = 0; i < links.length; i++) {
+    var a = links[i];
+    if (WHATSAPP) { a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg); a.target = "_blank"; a.rel = "noopener"; }
+    else { a.href = "#"; a.setAttribute("aria-disabled", "true"); }
+  }
+})();
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $("form"), review = $("review");
+
+  var t = new Date(); t.setDate(t.getDate() + 1);
+  $("date").min = t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+
+  function setErr(id, text) {
+    $(id + "-err").textContent = text || "";
+    $(id).setAttribute("aria-invalid", text ? "true" : "false");
+  }
+  function fmtDate(v) {
+    var p = v.split("-");
+    return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var car = $("car").value.trim(), pc = $("postcode").value.trim(), who = $("who").value.trim();
+    setErr("car", car ? "" : "Enter your car's make, model and year.");
+    setErr("postcode", pc ? "" : "Enter your postcode.");
+    setErr("who", who ? "" : "Enter your name.");
+    var bad = form.querySelector('[aria-invalid="true"]');
+    if (bad) { bad.focus(); return; }
+
+    var o = $("opt").value.split("|");
+    var lines = ["Hi, I'd like to book a dash cam fitting in Manchester.", "",
+      "Option: " + o[0] + " (" + o[1] + ")", "Car: " + car, "Postcode: " + pc];
+    if ($("date").value) lines.push("Day I'd like: " + fmtDate($("date").value));
+    lines.push("Name: " + who);
+    var text = lines.join("\n");
+
+    $("msg").textContent = text;
+    var send = $("send");
+    if (WHATSAPP) {
+      send.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
+      send.removeAttribute("aria-disabled"); $("setup").hidden = true;
+    } else {
+      send.href = "#"; send.setAttribute("aria-disabled", "true"); $("setup").hidden = false;
+    }
+    $("copied").textContent = "";
+    form.hidden = true; review.hidden = false;
+    review.scrollIntoView({ block: "start" }); review.focus();
+  });
+
+  $("edit").addEventListener("click", function () {
+    review.hidden = true; form.hidden = false; $("car").focus();
+  });
+
+  $("copy").addEventListener("click", function () {
+    var text = $("msg").textContent;
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents($("msg"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      $("copied").textContent = "Select and copy the message above.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { $("copied").textContent = "Message copied."; }, fallback);
+    } catch (err) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>

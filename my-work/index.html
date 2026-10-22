@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Work | Mobile Car Tech Manchester</title>
+
+<meta name="description" content="Photos of dash cam fittings by Mobile Car Tech Manchester.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: a single column of photos, newest first, each with a plain caption. */
+:root {
+  --bg: #FFFFFF; --surface: #F5F5F5; --text: #111111; --muted: #555555; --line: #DDDDDD;
+  --accent: #D62828; --on-accent: #FFFFFF;
+  --font: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111; --surface: #1C1C1C; --text: #FFFFFF; --muted: #AAAAAA; --line: #333333;
+    --accent: #EF5350; --on-accent: #111111; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111111; --surface: #1C1C1C; --text: #FFFFFF; --muted: #AAAAAA; --line: #333333;
+  --accent: #EF5350; --on-accent: #111111; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--font); font-size: 20px; line-height: 1.55;
+  padding-block: 0 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 640px; margin: 0 auto; }
+a { color: inherit; }
+.name { font-weight: 700; padding-block: 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; }
+.name > a { text-decoration: none; }
+nav { display: flex; gap: 20px; font-weight: 400; font-size: 18px; flex-wrap: wrap; }
+nav a { text-underline-offset: 4px; }
+nav a[aria-current="page"] { font-weight: 700; }
+h1, h2 { text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(34px, 8vw, 48px); margin-top: 40px; }
+h2 { font-size: clamp(26px, 6vw, 32px); margin-bottom: 14px; }
+p { margin: 0 0 14px; }
+.lead { color: var(--muted); font-size: 22px; margin-top: 12px; }
+#jobs { display: grid; gap: 36px; margin: 32px 0 40px; }
+.job { margin: 0; }
+.job img { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--surface); }
+.job h2 { font-size: 22px; margin: 12px 0 2px; }
+.job p { color: var(--muted); font-size: 18px; margin: 0; }
+.empty { background: var(--surface); border-radius: 8px; padding: 24px; }
+.empty p:last-child { margin-bottom: 0; }
+section { padding-block: 34px; border-top: 1px solid var(--line); }
+.btn {
+  display: inline-block; text-decoration: none; text-align: center;
+  background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent);
+  font: 700 21px/1.2 var(--font); padding: 18px 30px; border-radius: 8px;
+}
+.btn.alt { background: transparent; color: var(--text); border-color: var(--text); }
+.btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+footer { color: var(--muted); font-size: 16px; border-top: 1px solid var(--line); padding-top: 24px; }
+.name { background: #111111; color: #FFFFFF; border-bottom: 0; box-shadow: 0 0 0 100vmax #111111; clip-path: inset(0 -100vmax); }
+.name :focus-visible { outline-color: #FFFFFF; }
+html{color-scheme:light}[hidden]{display:none!important}img{max-width:100%}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="name">
+    <a href="/">Mobile Car Tech Manchester</a>
+    <nav aria-label="Pages"><a href="/#book">Book</a><a href="/fitting-guide/">Fitting guide</a><a href="#" aria-current="page">My work</a></nav>
+  </div>
+
+  <h1>My work</h1>
+  <p class="lead">Recent dash cam fittings in Manchester.</p>
+
+  <div id="jobs"></div>
+
+  <section>
+    <h2>Want yours fitted?</h2>
+    <p style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="/#book">Book now</a><a class="btn alt" data-wa href="#">WhatsApp me</a></p>
+  </section>
+
+  <footer>Mobile Car Tech Manchester · Dash cam fitting in Manchester and nearby areas</footer>
+</div>
+
+<script>
+/* OWNER: each fitting is one entry, newest first. Send Claude the photos and details and it will add them here.
+   Fields: img (photo), alt (what the photo shows), car, fitted (what was done), date (e.g. "October 2026"). */
+var WHATSAPP = "447356233159"; // OWNER: WhatsApp number, international format, no +, spaces or leading 0, e.g. "447123456789"
+var JOBS = [
+  // { img: "data:image/jpeg;base64,...", alt: "Dash cam behind the mirror with the cable hidden", car: "Ford Focus 2018", fitted: "Front and rear dash cams", date: "October 2026" }
+];
+
+(function () {
+  var msg = "Hi, I'm looking to book a dash cam fitting in Manchester. My car is [make/model] and I'm interested in [service option].";
+  var links = document.querySelectorAll("[data-wa]");
+  for (var i = 0; i < links.length; i++) {
+    var a = links[i];
+    if (WHATSAPP) { a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg); a.target = "_blank"; a.rel = "noopener"; }
+    else { a.href = "#"; a.setAttribute("aria-disabled", "true"); }
+  }
+})();
+
+(function () {
+  var box = document.getElementById("jobs");
+  if (!JOBS.length) {
+    box.innerHTML = '<div class="empty"><p><b>Photos are on the way.</b></p><p>I\'m adding pictures of my recent fittings here. In the meantime, message me and I\'ll show you examples.</p></div>';
+    return;
+  }
+  JOBS.forEach(function (j) {
+    var f = document.createElement("figure"); f.className = "job";
+    var img = document.createElement("img"); img.src = j.img; img.alt = j.alt || ""; img.loading = "lazy";
+    var h = document.createElement("h2"); h.textContent = j.car || "";
+    var p = document.createElement("p"); p.textContent = [j.fitted, j.date].filter(Boolean).join(" · ");
+    f.appendChild(img); f.appendChild(h); f.appendChild(p); box.appendChild(f);
+  });
+})();
+</script>
+
+</body>
+</html>
