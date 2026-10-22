@@ -126,6 +126,14 @@ input[type=text],input[type=date],select{font-size:17px;padding:13px}
 .bar{gap:8px;padding-top:8px}.bar .btn{padding:13px 8px}
 footer{font-size:14px}
 @media (min-width:820px){body{padding-bottom:0}}
+/* logo + photo hero */
+.name{align-items:center!important}
+.logo{display:grid;gap:5px;text-decoration:none;color:#fff;line-height:1;width:max-content}
+.logo b{font-size:17px;letter-spacing:.05em;font-weight:800}
+.logo i{display:block;height:2px;background:#E02B2B}
+.logo em{font-style:normal;font-size:10.5px;letter-spacing:.43em;font-weight:700;margin-right:-.43em}
+.hero.photo{background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.78) 100%),url(/images/hero.jpg) center/cover #1f1f1f;border-radius:14px;margin-top:18px;min-height:380px;align-content:end;padding:150px 20px 22px}
+.hero.photo h1{color:#fff}.hero.photo .sub{color:#E8E8E8}
 </style>
 </head>
 <body>
@@ -134,7 +142,7 @@ footer{font-size:14px}
 <div class="wrap">
 
   <div class="name">
-    <span>Mobile Car Tech Manchester</span>
+    <a class="logo" href="/" aria-label="Mobile Car Tech Manchester, home"><b>MOBILE CAR TECH</b><i></i><em>MANCHESTER</em></a>
     <nav aria-label="Pages"><a href="#book">Book</a><a href="/fitting-guide/">Fitting guide</a><a href="/my-work/">My work</a></nav>
   </div>
 
@@ -308,5 +316,8 @@ var WHATSAPP = "447356233159";
 })();
 </script>
 
+<script>
+(function(){var im=new Image();im.onload=function(){var h=document.querySelector(".hero");if(h)h.classList.add("photo")};im.src="/images/hero.jpg";})();
+</script>
 </body>
 </html>
