@@ -200,7 +200,8 @@ footer{font-size:14px}
       <div class="field">
         <label for="date">Day you'd like</label>
         <input type="date" id="date">
-        <div class="hint">I'll confirm a time with you on WhatsApp.</div>
+        <div class="hint">Pick a day at least 2 days ahead, so I can get the stock in. I'll confirm a time with you on WhatsApp.</div>
+        <div class="err" id="date-err" role="alert"></div>
       </div>
       <div class="field">
         <label for="who">Your name</label>
@@ -257,7 +258,7 @@ var WHATSAPP = "447356233159";
   var $ = function (id) { return document.getElementById(id); };
   var form = $("form"), review = $("review");
 
-  var t = new Date(); t.setDate(t.getDate() + 1);
+  var t = new Date(); t.setDate(t.getDate() + 2);
   $("date").min = t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
 
   function setErr(id, text) {
@@ -275,6 +276,8 @@ var WHATSAPP = "447356233159";
     setErr("car", car ? "" : "Enter your car's make, model and year.");
     setErr("postcode", pc ? "" : "Enter your postcode.");
     setErr("who", who ? "" : "Enter your name.");
+    var dv = $("date").value;
+    setErr("date", dv && dv < $("date").min ? "Choose a day at least 2 days from today." : "");
     var bad = form.querySelector('[aria-invalid="true"]');
     if (bad) { bad.focus(); return; }
 
